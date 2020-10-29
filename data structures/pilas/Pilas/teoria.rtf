@@ -1,0 +1,122 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww12140\viewh14580\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Pila: \
+Es una estrucutra de dato de entradas ordenadas,de fora que solo se pueden intoducir y eliminar por un extremo (la cima)\'85 estructura LIFO (last in first out = el ultimo que entra es el primero ue sale)\
+\
+\
+          _cima__\
+         |             |\
+         |______ | \
+         |             |\
+         |______ |\
+         |             |\
+         |______ |\
+         |             |\
+         |______ |\
+\
+\
+metodos:\
+\
+Insertar \
+quitar\
+_______________________________\
+\
+         | ___dato_______|\
+         |____*siguiente__|\
+                Null\
+\
+Dato: recibe valor o tipos de dato (int char\'85 etc.)\
+*siguiente: puntero que se\'f1ala la posicion de la pila, el primer elemento que entra se\'f1ala a null\
+\
+se a\'f1ade un elemento\
+         | ___dato_______|\
+         |____*siguiente__|  apunta a una estructura o nodo (el que est\'e1 abajo)         \
+                 ||\
+         | ___dato_______|\
+         |____*siguiente__|\
+                 ||\
+                Null\
+\
+se a\'f1ade otro elemento o se crea otro nodo \
+         | ___dato_______|\
+         |____*siguiente__|  apunta a una estructura o nodo (el que est\'e1 abajo)         \
+                 ||\
+         | ___dato_______|\
+         |____*siguiente__|           \
+                 ||\
+         | ___dato_______|\
+         |____*siguiente__|\
+                 ||\
+                Null\
+\
+\
+struct Nodo\{\
+     int dato\
+     Nodo *siguiente\'85. este apunta a otro nodo es por esto que es de tipo nodo \'93recursividad loca\'94\
+\}\
+https://www.youtube.com/watch?v=joAw2jWgZqA&list=PLWtYZ2ejMVJlUu1rEHLC0i_oibctkl0Vh&index=96\
+____________________________________________________________\
+Insertar elementos\
+\
+pasos\'85.\
+1. crear espacio en memoria para almacenar un nodo (nodo es estructura que tiene dato y puntero)\
+2. cargar el valor dentro del nodo (dato)\
+3. cargar puntero pila dentro del nodo *siguiente\
+4. asignar el nuevo nodo a pila\
+\
+*paso 1-> reservar memoria\
+\
+pila  = NULL; similar a inicializar un contador en 0\
+Nodo *nuevo_nodo = new Nodo(); apuntador con nombre nuevo:nodo, reservando memoria con el new\
+\
+funcion agregarpila (nodo *&pila, int n)\'85..nodo va a cambiar de tama\'f1o varias veces por eso se pasa por referencia y n es el dato o valor a agregar\
+\
+*paso 2 -> cargar el valor dentro del nodo\
+\
+nuevo_nodo -> dato = 10; se toma el nodo creado con un apuntador a dato se le asigna el valor 10\
+\
+*paso 3 -> cargar puntero pila en el nodo *siguiente\
+\
+nuevo_nodo -> siguiente = pila; pila en esta primera instancia vale null\
+\
+*paso 4-> agitar el nuevo nodo a pila\
+la variable puntero pila debe se\'f1alar a la cima\
+\
+pila = nuevo_nodo; da la forma d escalera \
+\
+\
+https://www.youtube.com/watch?v=tq3Th-zqeA4&list=PLWtYZ2ejMVJlUu1rEHLC0i_oibctkl0Vh&index=97\
+____________________\
+\
+Quitar elementos de una pila\
+quitar elemento (Nodo *&pila, int &n)  ; &n -> e spor referencia el dato que se quiere sacar y es as\'ed ya que varia\
+\
+4 pasos:\
+\
+1.crear una variable *auxiliar de tipo nodo\
+\
+     pila-> | valor| | -> | otro val | |-> NULL\
+Nodo *aux = pila ; quiere decir que se\'f1alan a la cima de la pila \
+\
+2. igualar n a aux-> dato\
+n = aux -> dato ; en n se guarda el valor del nodo desdecir auxiliar ya no solo apunta las pila sino que toma el valor \
+\
+3. pasar pila a el siguiente nodo, ya que el primer nodo es el que se va a eliminar\
+ pila = aux -> siguiente ; auxiliar mantiene ella referencia el nodo ya qu eno se puede eliminar as\'ed como as\'ed\
+\
+4. eliminar aux \
+delete aux; as\'ed como con anterioridad se uso new para crear s esa la palabra reservada delete\
+\
+\
+\
+\
+\
+\
+     \
+\
+}
